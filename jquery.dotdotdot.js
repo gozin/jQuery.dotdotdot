@@ -1,5 +1,5 @@
 /*	
- *	jQuery dotdotdot 1.6.1
+ *	jQuery dotdotdot 1.6.2
  *	
  *	Copyright (c) 2013 Fred Heusschen
  *	www.frebsite.nl
@@ -84,6 +84,7 @@
 					$inr = $dot.wrapInner( '<div class="dotdotdot" />' ).children();
 					$inr.empty()
 						.append( orgContent.clone( true ) )
+						.find( 'br' ).replaceWith( '  <br />  ' ).end()
 						.css({
 							'height'	: 'auto',
 							'width'		: 'auto',
