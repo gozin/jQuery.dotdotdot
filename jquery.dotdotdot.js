@@ -347,7 +347,7 @@
 			var e	= $elements[ a ],
 				$e	= $(e);
 
-			if ( typeof e == 'undefined' )
+			if ( typeof e == 'undefined' || (e.nodeType == 3 && $.trim(e.data).length == 0) )
 			{
 				continue;
 			}
