@@ -1,5 +1,5 @@
 /*	
- *	jQuery dotdotdot 1.6.2
+ *	jQuery dotdotdot 1.6.3
  *	
  *	Copyright (c) 2013 Fred Heusschen
  *	www.frebsite.nl
@@ -347,7 +347,7 @@
 			var e	= $elements[ a ],
 				$e	= $(e);
 
-			if ( typeof e == 'undefined' || (e.nodeType == 3 && $.trim(e.data).length == 0) )
+			if ( typeof e == 'undefined' || ( e.nodeType == 3 && $.trim( e.data ).length == 0 ) )
 			{
 				continue;
 			}
