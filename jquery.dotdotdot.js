@@ -596,7 +596,7 @@
 	//	override jQuery.html
 	var _orgHtml = $.fn.html;
     $.fn.html = function( str ) {
-		if ( typeof str != 'undefined' )
+		if ( arguments.length > 0 && typeof str != 'undefined' )
 		{
 			if ( this.data( 'dotdotdot' ) )
 			{
@@ -605,8 +605,11 @@
 					return this.trigger( 'update', [ str ] );
 				}
 			}
-			return _orgHtml.call( this, str );
 		}
+		if (arguments.length > 0) {
+		    return _orgHtml.call(this, str);
+		}
+
 		return _orgHtml.call( this );
     };
 
@@ -614,7 +617,7 @@
 	//	override jQuery.text
 	var _orgText = $.fn.text;
     $.fn.text = function( str ) {
-		if ( typeof str != 'undefined' )
+		if ( arguments.length > 0 && str != 'undefined' )
 		{
 			if ( this.data( 'dotdotdot' ) )
 			{
@@ -624,8 +627,11 @@
 				temp.remove();
 				return this.trigger( 'update', [ str ] );
 			}
-			return _orgText.call( this, str );
 		}
+		if (arguments.length > 0) {
+		    return _orgText.call(this, str);
+		}
+
         return _orgText.call( this );
     };
 
