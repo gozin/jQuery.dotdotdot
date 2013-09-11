@@ -25,7 +25,7 @@
 		{
 			if ( !o || o.debug !== false )
 			{
-				debug( true, 'No element found for "' + this.selector + '".' );	
+				debug( true, 'No element found for "' + this.selector + '".' );
 			}
 			return this;
 		}
@@ -528,9 +528,19 @@
 			return "";
 		}
 	}
+	function getPrevNode( n )
+	{
+		do
+		{
+			n = n.previousSibling;
+		}
+		while ( n && n.nodeType !== 1 && n.nodeType !== 3 );
+
+		return n;
+	}
 	function findLastTextNode( $el, $top, excludeCurrent )
 	{
-		var e = $el && $el[0], $p;
+		var e = $el && $el[0], p;
 		if ( e )
 		{
 			if ( !excludeCurrent )
@@ -544,19 +554,19 @@
 					return findLastTextNode( $el.contents().last(), $top );
 				}
 			}
-			$p = $el.prev();
-			while ( !$p.length && $el.length )
+			p = getPrevNode( e );
+			while ( !p )
 			{
 				$el = $el.parent();
-				if ( $el.is( $top ) )
+				if ( $el.is( $top ) || !$el.length )
 				{
 					return false;
 				}
-				$p = $el.prev();
+				p = getPrevNode( $el[0] );
 			}
-			if ( $p.length )
+			if ( p )
 			{
-				return findLastTextNode( $p, $top );
+				return findLastTextNode( $(p), $top );
 			}
 		}
 		return false;
