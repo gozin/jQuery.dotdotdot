@@ -1,5 +1,5 @@
 /*	
- *	jQuery dotdotdot 1.6.4
+ *	jQuery dotdotdot 1.6.5
  *	
  *	Copyright (c) 2013 Fred Heusschen
  *	www.frebsite.nl
@@ -368,7 +368,8 @@
 					isTruncated = ellipsis( $e, $d, $i, o, after );
 				}
 
-				if ( !isTruncated ) {
+				if ( !isTruncated )
+				{
 					$e.remove();
 					isTruncated = true;
 				}
@@ -422,7 +423,7 @@
 			{
 				endPos = midPos;
 			}
-			if( endPos == startPos && endPos == 0 && o.fallbackToLetter )
+			if ( endPos == startPos && endPos == 0 && o.fallbackToLetter )
 			{
 				separator	= '';
 				textArr		= textArr[0].split(separator);
@@ -540,7 +541,7 @@
 	}
 	function findLastTextNode( $el, $top, excludeCurrent )
 	{
-		var e = $el && $el[0], p;
+		var e = $el && $el[ 0 ], p;
 		if ( e )
 		{
 			if ( !excludeCurrent )
@@ -593,7 +594,8 @@
 		var h = $el.innerHeight(),
 			a = [ 'paddingTop', 'paddingBottom' ];
 
-		for ( var z = 0, l = a.length; z < l; z++ ) {
+		for ( var z = 0, l = a.length; z < l; z++ )
+		{
 			var m = parseInt( $el.css( a[ z ] ), 10 );
 			if ( isNaN( m ) )
 			{
@@ -631,8 +633,9 @@
 
 	//	override jQuery.html
 	var _orgHtml = $.fn.html;
-	$.fn.html = function( str ) {
-		if (str != undef && !$.isFunction( str ) && this.data( 'dotdotdot' ) )
+	$.fn.html = function( str )
+	{
+		if ( str != undef && !$.isFunction( str ) && this.data( 'dotdotdot' ) )
 		{
 			return this.trigger( 'update', [ str ] );
 		}
@@ -642,11 +645,12 @@
 
 	//	override jQuery.text
 	var _orgText = $.fn.text;
-	$.fn.text = function( str ) {
+	$.fn.text = function( str )
+	{
 		if ( str != undef && !$.isFunction( str ) && this.data( 'dotdotdot' ) )
 		{
-				str = $( '<div />' ).text( str ).html();
-				return this.trigger( 'update', [ str ] );
+			str = $( '<div />' ).text( str ).html();
+			return this.trigger( 'update', [ str ] );
 		}
 		return _orgText.apply( this, arguments );
 	};
