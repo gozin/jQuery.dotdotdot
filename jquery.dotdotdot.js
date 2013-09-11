@@ -12,7 +12,7 @@
  *	http://en.wikipedia.org/wiki/GNU_General_Public_License
  */
 
-(function( $ )
+(function( $, undef )
 {
 	if ( $.fn.dotdotdot )
 	{
@@ -596,43 +596,23 @@
 	//	override jQuery.html
 	var _orgHtml = $.fn.html;
     $.fn.html = function( str ) {
-		if ( arguments.length > 0 && typeof str != 'undefined' )
+		if (str != undef && !$.isFunction( str ) && this.data( 'dotdotdot' ) )
 		{
-			if ( this.data( 'dotdotdot' ) )
-			{
-				if ( typeof str != 'function' )
-				{
-					return this.trigger( 'update', [ str ] );
-				}
-			}
+            return this.trigger( 'update', [ str ] );
 		}
-		if (arguments.length > 0) {
-		    return _orgHtml.call(this, str);
-		}
-
-		return _orgHtml.call( this );
+		return _orgHtml.apply( this, arguments );
     };
 
 
 	//	override jQuery.text
 	var _orgText = $.fn.text;
     $.fn.text = function( str ) {
-		if ( arguments.length > 0 && str != 'undefined' )
+		if ( str != undef && !$.isFunction( str ) && this.data( 'dotdotdot' ) )
 		{
-			if ( this.data( 'dotdotdot' ) )
-			{
-				var temp = $( '<div />' );
-				temp.text( str );
-				str = temp.html();
-				temp.remove();
+				str = $( '<div />' ).text( str ).html();
 				return this.trigger( 'update', [ str ] );
-			}
 		}
-		if (arguments.length > 0) {
-		    return _orgText.call(this, str);
-		}
-
-        return _orgText.call( this );
+        return _orgText.apply( this, arguments );
     };
 
 
