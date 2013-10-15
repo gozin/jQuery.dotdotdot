@@ -99,6 +99,7 @@
 					if ( conf.afterElement )
 					{
 						after = conf.afterElement.clone( true );
+					    after.show();
 						conf.afterElement.remove();
 					}
 					if ( test( $inr, opts ) )
