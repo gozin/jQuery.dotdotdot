@@ -1,5 +1,4 @@
 jQuery.dotdotdot
 ================
 
-Advanced cross-browser ellipsis for multiple line content.
-Demo's and documentation: http://dotdotdot.frebsite.nl
+Sorry for the inconvenience, but this repository moved: https://github.com/BeSite/jQuery.dotdotdot
